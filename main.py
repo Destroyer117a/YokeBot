@@ -29,11 +29,11 @@ async def ping(ctx):
 @bot.command(kick_members=True)
 async def kick(ctx, user: discord.Member, *, reason=None):
   author = ctx.message.author
-  if "Admin" in author.roles:
+  if "Admins" in author.roles:
     await user.kick(reason=reason)
     await ctx.send("{} has been kicked succesfully.".format(user))
   else:
-    await ctx.send("Permission Denied\n")
+    await ctx.send("Permission Denied")
   
 
 @bot.command(pass_context=True)
@@ -84,6 +84,15 @@ async def ihadastroke(ctx):
 
     await ctx.send(submission.url)
 
+@bot.command(ban_members=True)
+async def ban(ctx, user: discord.Member, *, reason=None):
+  author = ctx.message.author
+  if "Admins" in author.roles:
+    
+    await user.ban(reason=reason)
+    await ctx.send("{} has been banned succesfully.".format(user))
+  else:
+    await ctx.send("Permission Denied")
 
 
 
