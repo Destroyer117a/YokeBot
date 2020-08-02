@@ -66,6 +66,27 @@ async def aww(ctx):
 
     await ctx.send(submission.url)
 
+@bot.command()
+async def facepalm(ctx):
+    memes_submissions = reddit.subreddit('facepalm').hot()
+    post_to_pick = random.randint(1, 10)
+    for i in range(0, post_to_pick):
+        submission = next(x for x in memes_submissions if not x.stickied)
+
+    await ctx.send(submission.url)
+
+@bot.command()
+async def ihadastroke(ctx):
+    memes_submissions = reddit.subreddit('ihadastroke').hot()
+    post_to_pick = random.randint(1, 10)
+    for i in range(0, post_to_pick):
+        submission = next(x for x in memes_submissions if not x.stickied)
+
+    await ctx.send(submission.url)
+
+
+
+
 
 
 
